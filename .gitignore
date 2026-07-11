@@ -81,3 +81,6 @@ Desktop.ini
 
 # Local design/reference docs, not part of the shipped project
 docs/
+
+# Real broker credentials - keep mqtt_secrets.h.example in git, not this
+mqtt_secrets.h
