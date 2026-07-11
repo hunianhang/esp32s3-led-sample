@@ -79,3 +79,6 @@ Desktop.ini
 
 # VS Code workspace settings (machine-specific paths: compiler, ESP-IDF install, COM port)
 .vscode/
+
+# Local design/reference docs, not part of the shipped project
+docs/
