@@ -14,9 +14,8 @@
 static const char *TAG = "mqtt_app";
 
 /* OneNET Thing Model (物模型) topics: $sys/{product-id}/{device-name}/thing/...
- * "temperature" below must match the identifier you defined for this
- * property in the OneNET console's Thing Model (TSL) editor - rename it
- * here if you used a different identifier. */
+ * "temp_value" in mqtt_app_report_temperature() below is the property
+ * identifier defined in the OneNET console's Thing Model (TSL) editor. */
 #define MQTT_TOPIC_PROPERTY_POST       "$sys/" MQTT_USERNAME "/" MQTT_CLIENT_ID "/thing/property/post"
 #define MQTT_TOPIC_PROPERTY_POST_REPLY "$sys/" MQTT_USERNAME "/" MQTT_CLIENT_ID "/thing/property/post/reply"
 
@@ -97,7 +96,7 @@ void mqtt_app_report_temperature(float celsius)
     static uint32_t msg_id = 1;
     char payload[128];
     snprintf(payload, sizeof(payload),
-             "{\"id\":\"%" PRIu32 "\",\"version\":\"1.0\",\"params\":{\"temperature\":{\"value\":%.1f}}}",
+             "{\"id\":\"%" PRIu32 "\",\"version\":\"1.0\",\"params\":{\"temp_value\":{\"value\":%.1f}}}",
              msg_id++, celsius);
 
     esp_mqtt_client_publish(s_client, MQTT_TOPIC_PROPERTY_POST, payload, 0, 1, 0);

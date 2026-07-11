@@ -84,3 +84,6 @@ docs/
 
 # Real broker credentials - keep mqtt_secrets.h.example in git, not this
 mqtt_secrets.h
+
+# Personal notes containing real OneNET device secret/token
+001_Readme_MQTT_info_upload.txt
