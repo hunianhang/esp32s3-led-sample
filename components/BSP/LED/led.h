@@ -1,0 +1,26 @@
+#ifndef __LED_H__
+#define __LED_H__
+
+#include "driver/gpio.h"
+
+#define LED_GPIO_PIN GPIO_NUM_48
+
+
+enum GPIO_OUTPUT_STATE {
+    PIN_RESET = 0,
+    PIN_SET = 1
+};
+
+
+#define LED(X) do{ (X)? \
+        gpio_set_level(LED_GPIO_PIN, PIN_RESET):    \
+        gpio_set_level(LED_GPIO_PIN, PIN_SET);      \
+    }while(0)
+
+#define LED_TOGGLE() do{ \
+        gpio_set_level(LED_GPIO_PIN, !gpio_get_level(LED_GPIO_PIN)); \
+    }while(0)   
+
+void led_init(void);
+#endif
+
